@@ -10,6 +10,7 @@ const path = require('path');
 const productRoutes = require("./api/routes/products");
 const orderRoutes = require("./api/routes/orders");
 const userRoutes = require("./api/routes/user");
+const articleRoutes = require("./api/routes/articles");
 
 require('dotenv').config()
 
@@ -49,6 +50,10 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/express";
     app.use("/products", productRoutes);
     app.use("/orders", orderRoutes);
     app.use("/user", userRoutes);
+    app.use("/articles", articleRoutes);
+
+    
+
     
     app.use((req, res, next) => {
       const error = new Error("Not found");

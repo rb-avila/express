@@ -11,6 +11,7 @@ exports.orders_get_all = (req, res, next) => {
     .then(docs => {
       res.status(200).json({
         count: docs.length,
+        response: docs,
         orders: docs.map(doc => {
           return {
             _id: doc._id,
@@ -47,7 +48,7 @@ exports.orders_create_order = (req, res, next) => {
       return order.save();
     })
     .then(result => {
-      console.log(result);
+      // console.log(result);
       res.status(201).json({
         message: "Order stored",
         createdOrder: {
